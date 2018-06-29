@@ -3,11 +3,11 @@ import './App.css';
 import {FormGroup, FormControl, InputGroup, ListGroup, ListGroupItem, Table } from 'react-bootstrap';
 
 import SpotifyWebApi from 'spotify-web-api-js';
-const spotifyApi = new SpotifyWebApi();
 
-// Add caching? MongoDB?
-// Add genre ranking?
-// Remind user to login, timeout
+var client_id = '38c0e703f3fd485695faa5e2370f950e'; // Your client id
+var redirect_uri = 'http://localhost:3000/callback'; // Your redirect uri
+
+const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
 
@@ -15,6 +15,7 @@ class App extends Component {
     super(props);
     const params = this.getHashParams();
     const token = params.access_token;
+	this.authorizeURL = this.getAuthURL();
     if (token) {
       spotifyApi.setAccessToken(token);
     }
@@ -45,6 +46,10 @@ class App extends Component {
        e = r.exec(q);
     }
     return hashParams;
+  }
+  
+  getAuthURL(){
+	return 'https://accounts.spotify.com/authorize?client_id=' + client_id + '&scope=playlist-modify-private%20playlist-modify-public%20user-read-private%20user-read-email&response_type=token&redirect_uri=' + redirect_uri;
   }
   
   getCredentials(){
@@ -194,7 +199,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <a href='http://localhost:8888' >Login to Spotify </a>
+		<a href={this.authorizeURL} >Login to Spotify </a>
         { this.state.loggedIn &&
 			<FormGroup>
 			  <InputGroup>
