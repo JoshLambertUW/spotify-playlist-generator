@@ -1,9 +1,11 @@
 # spotify-playlist-generator
 Spotify Playlist Generator
 
+Try it here: https://joshlambertuw.github.io/spotify-playlist-generator/
+
 Enter a track and a playlist will be created based on that track using data from existing playlists.
 
-Built using NodeJS, ReactJS, and the JS Spotify API Wrapper.
+Built in JavaScript using NodeJS, React, and the JS Spotify API Wrapper.
 
 Dependencies:
     "gh-pages": "^1.1.0",
@@ -13,15 +15,14 @@ Dependencies:
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4",
     "spotify-web-api-js": "^0.23.0"
+    
+The Spotify API can authorize apps through either User Authorization or App Authorization. User Authorization is temporary and can be done client-side. App authorization maintains access but requires a server with a secret key.
 
-To run, you will need to register the app with the Spotify API.
+To run the tool, first register it with the Spotify API.
 
-Then replace the values in the server with yours:
+To use client-side, temporary authorization, enter your client id and redirect URL in the client file. Your redirect URL can be the page your are hosting the tool on, e.g. https://joshlambertuw.github.io/spotify-playlist-generator/.
 
-/* auth-server/authorization_code/app.js */
-var client_id = ‘CLIENT_ID’; // Your client id
-var client_secret = ‘CLIENT_SECRET’; // Your secret
-var redirect_uri = ‘REDIRECT_URI’; // Your redirect uri
+If you want to use server-side, permanent authorization, enter your client id, client secret, and redirect url in the authorization server app.js. The redirect URL will be your server address, e.g. 'http://localhost:8888/callback'.
 
 Then run the client with:
 'npm start'
