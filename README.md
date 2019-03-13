@@ -20,7 +20,7 @@ The Spotify API can authorize apps through either User Authorization or App Auth
 
 To run the tool, first register it with the Spotify API.
 
-To use client-side, temporary authorization, enter your client id and redirect URL in the client file. Your redirect URL can be the page your are hosting the tool on, e.g. https://joshlambertuw.github.io/spotify-playlist-generator/.
+To use client-side, temporary authorization, enter your client id and redirect URL in the client file. Your redirect URL can be the page you are hosting the tool on, e.g. https://joshlambertuw.github.io/spotify-playlist-generator/.
 
 If you want to use server-side, permanent authorization, enter your client id, client secret, and redirect url in the authorization server app.js. The redirect URL will be your server address, e.g. 'http://localhost:8888/callback'.
 
